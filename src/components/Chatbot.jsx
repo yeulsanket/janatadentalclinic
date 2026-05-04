@@ -31,7 +31,9 @@ SERVICES & COSTS:
 RULES:
 - Keep responses short and sweet (2-3 sentences).
 - If someone is in pain, be extra comforting.
-- **IMPORTANT:** If a user wants to book an appointment or check availability, ALWAYS tell them: "I can help you with that! Please fill out this quick form below so Dr. Sangle can get back to you personally." and then I will show the form.`;
+- **VOICE BOOKING:** If someone wants to book via voice, ask for their Name first, then their Phone Number, and then their Dental Concern. 
+- Once you have all three, tell them: "Excellent! I have sent your details to Dr. Sangle, and we will call you soon."
+- **IMPORTANT:** Do NOT show the form if the user is already speaking the details to you.`;
 
 const QUICK_REPLIES = [
   { label: '📅 Book Appointment', text: 'How do I book an appointment?' },
@@ -138,6 +140,8 @@ export default function Chatbot() {
   const [isSpeaking,  setIsSpeaking]  = useState(false);
   const [voiceStatus, setVoiceStatus] = useState('Tap mic to speak');
   const [transcript,  setTranscript]  = useState('');
+
+  const [voiceBooking, setVoiceBooking] = useState({ active: false, name: '', phone: '', note: '' });
 
   /* ── Refs to avoid stale closures ── */
   const messagesRef    = useRef([INITIAL_MSG]); // always-fresh messages
@@ -275,8 +279,26 @@ export default function Chatbot() {
       const reply = data.choices?.[0]?.message?.content?.trim()
         || 'Sorry, I could not process that. Please try again.';
 
-      // ✅ Detect if AI wants the user to book (via the system prompt instructions)
-      if (reply.toLowerCase().includes("fill out this quick form") || reply.toLowerCase().includes("book an appointment")) {
+      setMessages(prev => [...prev, { role: 'assistant', content: reply, id: msgId++ }]);
+
+      // ✅ Detect if AI has finished collecting voice booking details
+      if (reply.includes("I have sent your details to Dr. Sangle")) {
+        // Extract info from history or just send what we have
+        const historyText = newHistory.map(m => m.content).join("\n");
+        emailjs.send(
+          EMAILJS_SERVICE_ID,
+          EMAILJS_TEMPLATE_ID,
+          {
+            from_name: "Voice Booking",
+            reply_to: "N/A",
+            message: `VOICE BOOKING LOG:\n${historyText}`,
+          },
+          EMAILJS_PUBLIC_KEY
+        );
+      }
+
+      // ✅ Detect if AI wants the user to book via FORM (only if not in voice mode)
+      if (!voiceModeRef.current && (reply.toLowerCase().includes("fill out this quick form") || reply.toLowerCase().includes("book an appointment"))) {
         setMessages(prev => [...prev, { role: 'assistant', content: 'FORM_PLACEHOLDER', isBookingForm: true, id: msgId++ }]);
       }
 
