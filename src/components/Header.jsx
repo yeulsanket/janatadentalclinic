@@ -18,7 +18,7 @@ export default function Header() {
     <>
       <header className={`header ${scrolled ? 'scrolled' : ''}`}>
         <div className="container header-container">
-          <div className="logo">Dr. Rushikesh</div>
+          <div className="logo">Janata Dental Clinic</div>
           
           <nav className="desktop-nav">
             <a href="#about">About</a>
