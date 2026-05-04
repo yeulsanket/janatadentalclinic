@@ -3,80 +3,235 @@ import React from 'react';
 export default function Footer() {
   return (
     <footer className="site-footer">
+
+      {/* Top wave divider */}
+      <div className="footer-wave" aria-hidden="true">
+        <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" fill="currentColor" />
+        </svg>
+      </div>
+
       <div className="container footer-inner">
-        <div className="footer-logo">
-          Dr. Rushikesh Sangle
+
+        {/* Logo + tagline */}
+        <div className="footer-brand">
+          <div className="footer-logo">
+            <span className="footer-logo-dot" aria-hidden="true">🦷</span>
+            Dr. Rushikesh Sangle
+          </div>
+          <p className="footer-tagline">
+            Crafting Confident Smiles. Built on Science.<br />
+            Premium Dental Care · Dombivli, Maharashtra
+          </p>
         </div>
-        <p className="footer-tagline">
-          Crafting Confident Smiles. Built on Science.<br/>
-          Premium Dental Care · Dombivli, Maharashtra
-        </p>
-        <div className="footer-links">
-          <a href="#">Privacy Policy</a>
-          <a href="#">Terms of Service</a>
+
+        {/* Quick links */}
+        <nav className="footer-nav" aria-label="Footer navigation">
+          <a href="#about">About</a>
+          <a href="#services">Services</a>
+          <a href="#gallery">Gallery</a>
+          <a href="#credentials">Awards</a>
+          <a href="#contact">Contact</a>
+        </nav>
+
+        {/* Badges row */}
+        <div className="footer-badges">
+          <span className="footer-badge">🏆 18+ Awards</span>
+          <span className="footer-badge">⭐ 5.0 Rating</span>
+          <span className="footer-badge">🌍 ITI Certified</span>
+          <span className="footer-badge">🔒 SSL Secure</span>
         </div>
+
+        {/* Divider */}
+        <div className="footer-divider" aria-hidden="true" />
+
+        {/* Bottom row */}
         <div className="footer-bottom">
-          &copy; {new Date().getFullYear()} Dr. Rushikesh Sangle Dental Clinic. All rights reserved. <span className="ssl-badge">SSL Secure</span>
+          <span>© {new Date().getFullYear()} Dr. Rushikesh Sangle Dental Clinic. All rights reserved.</span>
+          <div className="footer-legal">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+          </div>
         </div>
+
       </div>
 
       <style>{`
+        /* ═══ FOOTER – White + Parrot Green Theme ═══ */
+
         .site-footer {
-          background-color: #0A1C2E;
-          color: #aebacd;
-          padding: 50px 5% 40px;
+          background: linear-gradient(160deg, #12612a 0%, #1a7a2e 50%, #0f5224 100%);
+          color: rgba(255,255,255,0.75);
+          padding: 0 0 40px;
           text-align: center;
+          position: relative;
+          overflow: hidden;
         }
+
+        /* Ambient glow orb */
+        .site-footer::before {
+          content: '';
+          position: absolute;
+          top: -80px; left: 50%; transform: translateX(-50%);
+          width: 600px; height: 400px;
+          background: radial-gradient(ellipse, rgba(76,214,105,0.12) 0%, transparent 70%);
+          pointer-events: none;
+          z-index: 0;
+        }
+
+        /* Wave SVG at top */
+        .footer-wave {
+          color: #f5fdf6; /* matches off-white above footer */
+          line-height: 0;
+          position: relative;
+          z-index: 1;
+        }
+        .footer-wave svg {
+          width: 100%; height: 60px; display: block;
+        }
+
         .footer-inner {
           display: flex;
           flex-direction: column;
-          gap: 18px;
+          gap: 24px;
           align-items: center;
+          padding-top: 40px;
+          position: relative;
+          z-index: 1;
         }
+
+        /* Brand */
+        .footer-brand { display: flex; flex-direction: column; gap: 10px; align-items: center; }
+
         .footer-logo {
-          font-family: var(--font-heading);
-          font-size: 24px;
-          color: var(--pure-white);
+          font-family: var(--font-heading, 'Playfair Display', serif);
+          font-size: 26px;
           font-weight: 700;
+          color: #ffffff;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          letter-spacing: -0.01em;
         }
+        .footer-logo-dot { font-size: 22px; }
+
         .footer-tagline {
           font-size: 14px;
           max-width: 400px;
-          line-height: 1.6;
+          line-height: 1.7;
+          color: rgba(255,255,255,0.6);
         }
-        .footer-links {
+
+        /* Nav links */
+        .footer-nav {
           display: flex;
-          gap: 25px;
+          gap: 8px;
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+        .footer-nav a {
           font-size: 13px;
+          font-weight: 600;
+          color: rgba(255,255,255,0.75);
+          padding: 6px 16px;
+          border-radius: 40px;
+          background: rgba(255,255,255,0.08);
+          border: 1px solid rgba(255,255,255,0.12);
+          backdrop-filter: blur(10px);
+          -webkit-backdrop-filter: blur(10px);
+          transition: background 220ms ease, color 220ms ease, border-color 220ms ease;
+          text-decoration: none;
         }
-        .footer-links a {
-          color: var(--gold-detail);
+        .footer-nav a:hover {
+          background: rgba(76,214,105,0.18);
+          border-color: rgba(76,214,105,0.45);
+          color: #ffffff;
         }
+
+        /* Badges */
+        .footer-badges {
+          display: flex;
+          gap: 10px;
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+        .footer-badge {
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          font-size: 12px;
+          font-weight: 600;
+          color: rgba(255,255,255,0.85);
+          background: rgba(255,255,255,0.07);
+          border: 1px solid rgba(255,255,255,0.14);
+          border-radius: 40px;
+          padding: 6px 16px;
+          backdrop-filter: blur(10px);
+          -webkit-backdrop-filter: blur(10px);
+          letter-spacing: 0.02em;
+          transition: background 220ms ease, border-color 220ms ease;
+        }
+        .footer-badge:hover {
+          background: rgba(76,214,105,0.15);
+          border-color: rgba(76,214,105,0.4);
+        }
+
+        /* Divider */
+        .footer-divider {
+          width: 100%;
+          height: 1px;
+          background: linear-gradient(90deg,
+            transparent, rgba(76,214,105,0.4) 30%,
+            rgba(76,214,105,0.6) 50%,
+            rgba(76,214,105,0.4) 70%, transparent
+          );
+          box-shadow: 0 0 10px rgba(76,214,105,0.2);
+        }
+
+        /* Bottom row */
         .footer-bottom {
-          margin-top: 20px;
-          padding-top: 20px;
-          border-top: 1px solid rgba(255,255,255,0.1);
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
           width: 100%;
           font-size: 13px;
-          line-height: 1.6;
+          color: rgba(255,255,255,0.45);
+          flex-wrap: wrap;
+          gap: 12px;
+          padding: 0 5%;
         }
-        .ssl-badge {
-          color: #25D366;
+        .footer-legal {
+          display: flex;
+          gap: 20px;
         }
-        
+        .footer-legal a {
+          color: rgba(76,214,105,0.9);
+          font-weight: 500;
+          text-decoration: none;
+          transition: color 200ms ease;
+          font-size: 13px;
+        }
+        .footer-legal a:hover { color: #ffffff; }
+
+        /* Mobile */
         @media (max-width: 768px) {
-          .site-footer {
-            padding: 40px 5% 100px; /* extra bottom for sticky CTA */
-          }
-          .footer-logo {
-            font-size: 20px;
-          }
-          .footer-tagline {
-            font-size: 13px;
-          }
+          .site-footer { padding-bottom: 110px; } /* space for sticky CTA */
+          .footer-logo { font-size: 22px; }
+          .footer-tagline { font-size: 13px; }
           .footer-bottom {
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
             font-size: 12px;
+            padding: 0 4%;
           }
+          .footer-legal { gap: 16px; }
+        }
+
+        @media (max-width: 480px) {
+          .footer-logo { font-size: 20px; }
+          .footer-nav a { font-size: 12px; padding: 5px 12px; }
+          .footer-badge { font-size: 11px; padding: 5px 12px; }
         }
       `}</style>
     </footer>

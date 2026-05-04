@@ -9,6 +9,7 @@ import Clinic from './components/Clinic';
 import Contact from './components/Contact';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import Chatbot from './components/Chatbot';
 
 function App() {
   return (
@@ -25,6 +26,8 @@ function App() {
         <Contact />
       </main>
       <Footer />
+      {/* SmileBot – 24/7 AI patient assistant */}
+      <Chatbot />
     </>
   );
 }
