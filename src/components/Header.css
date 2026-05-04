@@ -1,0 +1,127 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  transition: all 300ms ease;
+  padding: 20px 0;
+  background: transparent;
+}
+
+.header.scrolled {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 15px 0;
+  box-shadow: 0 2px 20px rgba(15, 42, 69, 0.05);
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 5%;
+}
+
+.logo {
+  font-family: var(--font-heading);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--primary-navy);
+}
+
+.desktop-nav {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.desktop-nav a {
+  font-weight: 500;
+  color: var(--primary-navy);
+  transition: color 200ms ease;
+}
+
+.desktop-nav a:hover:not(.btn) {
+  color: var(--gold-detail);
+}
+
+.mobile-menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--primary-navy);
+  cursor: pointer;
+}
+
+.mobile-nav-panel {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 80%;
+  max-width: 300px;
+  height: 100vh;
+  background: var(--pure-white);
+  box-shadow: -5px 0 30px rgba(0,0,0,0.1);
+  transition: right 300ms ease;
+  z-index: 99;
+  display: flex;
+  flex-direction: column;
+  padding: 80px 30px;
+  gap: 25px;
+}
+
+.mobile-nav-panel.open {
+  right: 0;
+}
+
+.mobile-nav-panel a {
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--primary-navy);
+}
+
+.mobile-sticky-cta {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 98;
+  background: var(--pure-white);
+  box-shadow: 0 -2px 15px rgba(0,0,0,0.05);
+}
+
+.sticky-btn {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding: 15px 0;
+  font-weight: 600;
+}
+
+.sticky-btn.primary {
+  background: var(--primary-navy);
+  color: var(--pure-white);
+}
+
+.sticky-btn.ghost {
+  color: var(--primary-navy);
+  background: var(--surface-white);
+}
+
+@media (max-width: 768px) {
+  .desktop-nav {
+    display: none;
+  }
+  .mobile-menu-btn {
+    display: block;
+    z-index: 101;
+  }
+  .mobile-sticky-cta {
+    display: flex;
+  }
+}

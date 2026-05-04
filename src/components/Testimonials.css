@@ -1,0 +1,127 @@
+.testimonials-section {
+  background-color: var(--surface-white);
+}
+
+.hero-testimonial {
+  display: flex;
+  background: var(--pure-white);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(15, 42, 69, 0.05);
+  margin-bottom: 60px;
+}
+
+.hero-testimonial-content {
+  flex: 1.5;
+  padding: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hero-quote {
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-size: 28px;
+  line-height: 1.4;
+  margin: 30px 0;
+  color: var(--primary-navy);
+}
+
+.patient-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.patient-avatar {
+  width: 50px;
+  height: 50px;
+  background-color: var(--mint-accent);
+  color: var(--primary-navy);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.hero-testimonial-image {
+  flex: 1;
+}
+
+.hero-testimonial-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.testimonial-card {
+  background: var(--pure-white);
+  padding: 40px 30px;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.02);
+}
+
+.quote {
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-size: 18px;
+  line-height: 1.6;
+  color: #444;
+  margin-bottom: 30px;
+}
+
+.testimonial-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #eaeaea;
+  padding-top: 20px;
+}
+
+.patient-name {
+  font-weight: 600;
+  color: var(--primary-navy);
+}
+
+.treatment-tag {
+  font-size: 12px;
+  background: var(--surface-white);
+  padding: 4px 12px;
+  border-radius: 20px;
+  color: #666;
+}
+
+@media (max-width: 992px) {
+  .hero-testimonial {
+    flex-direction: column-reverse;
+  }
+  
+  .hero-testimonial-content {
+    padding: 40px;
+  }
+  
+  .hero-quote {
+    font-size: 24px;
+  }
+  
+  .testimonials-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+  }
+}

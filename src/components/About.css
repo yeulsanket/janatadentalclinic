@@ -1,0 +1,123 @@
+.about-container {
+  display: flex;
+  align-items: center;
+  gap: 80px;
+}
+
+.about-image-col {
+  flex: 1;
+  position: relative;
+}
+
+.about-image-wrapper {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.about-image-wrapper img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  display: block;
+}
+
+.floating-credential-card {
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background: var(--pure-white);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(15, 42, 69, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  border: 1px solid var(--surface-white);
+}
+
+.credential-icon {
+  font-size: 24px;
+  background: var(--mint-accent);
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: var(--primary-navy);
+}
+
+.floating-credential-card strong {
+  display: block;
+  color: var(--primary-navy);
+  font-family: var(--font-heading);
+  font-size: 18px;
+}
+
+.floating-credential-card p {
+  font-size: 14px;
+  margin: 0;
+  color: #666;
+}
+
+.about-content-col {
+  flex: 1.2;
+}
+
+.about-content-col p {
+  margin-bottom: 20px;
+  color: #444;
+}
+
+.stats-row {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 50px;
+  padding-top: 30px;
+  border-top: 1px solid #eaeaea;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.counter-number {
+  font-family: var(--font-heading);
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--primary-navy);
+  line-height: 1.2;
+}
+
+.stat-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 5px;
+}
+
+@media (max-width: 992px) {
+  .about-container {
+    flex-direction: column;
+    gap: 60px;
+  }
+  
+  .floating-credential-card {
+    right: 20px;
+    bottom: 20px;
+  }
+  
+  .stats-row {
+    flex-wrap: wrap;
+    gap: 30px;
+  }
+  
+  .stat-item {
+    width: 40%;
+  }
+}
