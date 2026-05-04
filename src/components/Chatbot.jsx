@@ -300,7 +300,7 @@ export default function Chatbot() {
           {
             from_name: "SmileBot Booking",
             reply_to: "N/A",
-            message: `STRUCTURED BOOKING REQUEST:\n${summary}\n\nFULL LOG:\n${historyText}`,
+            message: `NEW APPOINTMENT REQUEST:\n${summary}`,
           },
           EMAILJS_PUBLIC_KEY
         );
