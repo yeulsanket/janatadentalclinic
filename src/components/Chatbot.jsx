@@ -31,9 +31,15 @@ SERVICES & COSTS:
 RULES:
 - Keep responses short and sweet (2-3 sentences).
 - If someone is in pain, be extra comforting.
-- **VOICE BOOKING:** If someone wants to book via voice, ask for their Name first, then their Phone Number, and then their Dental Concern. 
-- Once you have all three, tell them: "Excellent! I have sent your details to Dr. Sangle, and we will call you soon."
-- **IMPORTANT:** Do NOT show the form if the user is already speaking the details to you.`;
+- **VOICE & TEXT BOOKING:** If someone wants to book, you must collect exactly these 5 things one-by-one:
+  1. Full Name
+  2. Phone Number
+  3. Preferred Day (e.g. Monday, Wednesday)
+  4. Preferred Time Slot (between 10 AM - 10 PM)
+  5. Dental Concern
+- Once you have all 5, show a summary like: "**BOOKING SUMMARY:** Name: [Name] | Phone: [Phone] | Day: [Day] | Time: [Time] | Concern: [Concern]".
+- After showing the summary, tell them: "Excellent! I have sent your details to Dr. Sangle, and we will call you soon to confirm."
+- **IMPORTANT:** Do NOT show the form if you are already collecting details in the chat.`;
 
 const QUICK_REPLIES = [
   { label: '📅 Book Appointment', text: 'How do I book an appointment?' },
@@ -281,17 +287,20 @@ export default function Chatbot() {
 
       setMessages(prev => [...prev, { role: 'assistant', content: reply, id: msgId++ }]);
 
-      // ✅ Detect if AI has finished collecting voice booking details
-      if (reply.includes("I have sent your details to Dr. Sangle")) {
-        // Extract info from history or just send what we have
+      // ✅ Detect if AI has finished collecting details (either via summary or final confirmation)
+      if (reply.includes("I have sent your details to Dr. Sangle") || reply.includes("BOOKING SUMMARY")) {
         const historyText = newHistory.map(m => m.content).join("\n");
+        // Extract a clean summary if present
+        const summaryMatch = reply.match(/BOOKING SUMMARY: (.*)/i);
+        const summary = summaryMatch ? summaryMatch[1] : "See conversation log";
+
         emailjs.send(
           EMAILJS_SERVICE_ID,
           EMAILJS_TEMPLATE_ID,
           {
-            from_name: "Voice Booking",
+            from_name: "SmileBot Booking",
             reply_to: "N/A",
-            message: `VOICE BOOKING LOG:\n${historyText}`,
+            message: `STRUCTURED BOOKING REQUEST:\n${summary}\n\nFULL LOG:\n${historyText}`,
           },
           EMAILJS_PUBLIC_KEY
         );
