@@ -2,23 +2,83 @@ import React from 'react';
 
 export default function Footer() {
   return (
-    <footer style={{ backgroundColor: '#0A1C2E', color: '#aebacd', padding: '40px 5%', textAlign: 'center' }}>
-      <div className="container" style={{ display: 'flex', flexDirection: 'column', gap: '20px', alignItems: 'center' }}>
-        <div style={{ fontFamily: 'var(--font-heading)', fontSize: '24px', color: 'var(--pure-white)', fontWeight: '700' }}>
+    <footer className="site-footer">
+      <div className="container footer-inner">
+        <div className="footer-logo">
           Dr. Rushikesh Sangle
         </div>
-        <p style={{ fontSize: '14px', maxWidth: '400px' }}>
+        <p className="footer-tagline">
           Crafting Confident Smiles. Built on Science.<br/>
-          Premium Dental Care.
+          Premium Dental Care · Dombivli, Maharashtra
         </p>
-        <div style={{ display: 'flex', gap: '20px', fontSize: '13px' }}>
-          <a href="#" style={{ color: 'var(--gold-detail)' }}>Privacy Policy</a>
-          <a href="#" style={{ color: 'var(--gold-detail)' }}>Terms of Service</a>
+        <div className="footer-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
         </div>
-        <div style={{ marginTop: '20px', paddingTop: '20px', borderTop: '1px solid rgba(255,255,255,0.1)', width: '100%', fontSize: '13px' }}>
-          &copy; {new Date().getFullYear()} Dr. Rushikesh Sangle Dental Clinic. All rights reserved. <span style={{ color: '#25D366' }}>SSL Secure</span>
+        <div className="footer-bottom">
+          &copy; {new Date().getFullYear()} Dr. Rushikesh Sangle Dental Clinic. All rights reserved. <span className="ssl-badge">SSL Secure</span>
         </div>
       </div>
+
+      <style>{`
+        .site-footer {
+          background-color: #0A1C2E;
+          color: #aebacd;
+          padding: 50px 5% 40px;
+          text-align: center;
+        }
+        .footer-inner {
+          display: flex;
+          flex-direction: column;
+          gap: 18px;
+          align-items: center;
+        }
+        .footer-logo {
+          font-family: var(--font-heading);
+          font-size: 24px;
+          color: var(--pure-white);
+          font-weight: 700;
+        }
+        .footer-tagline {
+          font-size: 14px;
+          max-width: 400px;
+          line-height: 1.6;
+        }
+        .footer-links {
+          display: flex;
+          gap: 25px;
+          font-size: 13px;
+        }
+        .footer-links a {
+          color: var(--gold-detail);
+        }
+        .footer-bottom {
+          margin-top: 20px;
+          padding-top: 20px;
+          border-top: 1px solid rgba(255,255,255,0.1);
+          width: 100%;
+          font-size: 13px;
+          line-height: 1.6;
+        }
+        .ssl-badge {
+          color: #25D366;
+        }
+        
+        @media (max-width: 768px) {
+          .site-footer {
+            padding: 40px 5% 100px; /* extra bottom for sticky CTA */
+          }
+          .footer-logo {
+            font-size: 20px;
+          }
+          .footer-tagline {
+            font-size: 13px;
+          }
+          .footer-bottom {
+            font-size: 12px;
+          }
+        }
+      `}</style>
     </footer>
   );
 }

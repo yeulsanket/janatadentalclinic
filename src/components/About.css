@@ -7,12 +7,13 @@
 .about-image-col {
   flex: 1;
   position: relative;
+  min-width: 0;
 }
 
 .about-image-wrapper {
   position: relative;
   border-radius: 12px;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .about-image-wrapper img {
@@ -21,6 +22,7 @@
   aspect-ratio: 3/4;
   object-fit: cover;
   display: block;
+  border-radius: 12px;
 }
 
 .floating-credential-card {
@@ -35,6 +37,7 @@
   align-items: center;
   gap: 15px;
   border: 1px solid var(--surface-white);
+  max-width: 280px;
 }
 
 .credential-icon {
@@ -42,6 +45,7 @@
   background: var(--mint-accent);
   width: 50px;
   height: 50px;
+  min-width: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -53,17 +57,18 @@
   display: block;
   color: var(--primary-navy);
   font-family: var(--font-heading);
-  font-size: 18px;
+  font-size: 16px;
 }
 
 .floating-credential-card p {
-  font-size: 14px;
+  font-size: 13px;
   margin: 0;
   color: #666;
 }
 
 .about-content-col {
   flex: 1.2;
+  min-width: 0;
 }
 
 .about-content-col p {
@@ -82,6 +87,8 @@
 .stat-item {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
 .counter-number {
@@ -93,7 +100,7 @@
 }
 
 .stat-label {
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 500;
   color: #666;
   text-transform: uppercase;
@@ -101,23 +108,81 @@
   margin-top: 5px;
 }
 
+/* Tablet */
 @media (max-width: 992px) {
   .about-container {
     flex-direction: column;
     gap: 60px;
   }
   
+  .about-image-col {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  
   .floating-credential-card {
-    right: 20px;
-    bottom: 20px;
+    right: 10px;
+    bottom: -15px;
   }
   
   .stats-row {
     flex-wrap: wrap;
-    gap: 30px;
+    gap: 25px;
+    justify-content: center;
   }
   
   .stat-item {
     width: 40%;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .about-container {
+    gap: 50px;
+  }
+  
+  .about-image-col {
+    max-width: 350px;
+  }
+  
+  .floating-credential-card {
+    position: relative;
+    bottom: auto;
+    right: auto;
+    margin-top: 15px;
+    max-width: 100%;
+  }
+  
+  .counter-number {
+    font-size: 28px;
+  }
+  
+  .stat-item {
+    width: 45%;
+  }
+}
+
+/* Small mobile */
+@media (max-width: 480px) {
+  .about-image-col {
+    max-width: 100%;
+  }
+  
+  .counter-number {
+    font-size: 24px;
+  }
+  
+  .stat-label {
+    font-size: 11px;
+  }
+  
+  .stats-row {
+    gap: 20px;
+  }
+  
+  .stat-item {
+    width: 42%;
   }
 }

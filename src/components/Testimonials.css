@@ -37,6 +37,7 @@
 .patient-avatar {
   width: 50px;
   height: 50px;
+  min-width: 50px;
   background-color: var(--mint-accent);
   color: var(--primary-navy);
   border-radius: 50%;
@@ -50,6 +51,7 @@
 
 .hero-testimonial-image {
   flex: 1;
+  min-height: 300px;
 }
 
 .hero-testimonial-image img {
@@ -87,6 +89,8 @@
   align-items: center;
   border-top: 1px solid #eaeaea;
   padding-top: 20px;
+  gap: 10px;
+  flex-wrap: wrap;
 }
 
 .patient-name {
@@ -102,6 +106,7 @@
   color: #666;
 }
 
+/* Tablet */
 @media (max-width: 992px) {
   .hero-testimonial {
     flex-direction: column-reverse;
@@ -111,8 +116,13 @@
     padding: 40px;
   }
   
+  .hero-testimonial-image {
+    min-height: 250px;
+    max-height: 300px;
+  }
+  
   .hero-quote {
-    font-size: 24px;
+    font-size: 22px;
   }
   
   .testimonials-grid {
@@ -120,8 +130,47 @@
   }
 }
 
+/* Mobile */
 @media (max-width: 768px) {
+  .hero-testimonial {
+    margin-bottom: 40px;
+    border-radius: 12px;
+  }
+  
+  .hero-testimonial-content {
+    padding: 30px 25px;
+  }
+  
+  .hero-quote {
+    font-size: 20px;
+    margin: 20px 0;
+  }
+  
   .testimonials-grid {
     grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .testimonial-card {
+    padding: 30px 25px;
+  }
+  
+  .quote {
+    font-size: 16px;
+  }
+}
+
+/* Small mobile */
+@media (max-width: 480px) {
+  .hero-testimonial-content {
+    padding: 25px 20px;
+  }
+  
+  .hero-quote {
+    font-size: 18px;
+  }
+  
+  .hero-testimonial-image {
+    min-height: 200px;
   }
 }

@@ -12,6 +12,7 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
+  min-width: 0;
 }
 
 .gallery-main {
@@ -34,7 +35,7 @@
 
 .gallery-sub img {
   flex: 1;
-  width: 100%;
+  width: 50%;
   height: 100%;
   object-fit: cover;
   border-radius: 12px;
@@ -42,6 +43,7 @@
 
 .clinic-info {
   flex: 1;
+  min-width: 0;
 }
 
 .clinic-desc {
@@ -70,6 +72,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  min-width: 48px;
+  min-height: 48px;
 }
 
 .tech-details h4 {
@@ -118,6 +122,11 @@
   box-shadow: 0 4px 15px rgba(0,0,0,0.08);
 }
 
+.map-embed iframe {
+  display: block;
+  width: 100%;
+}
+
 .accessibility-note {
   display: flex;
   align-items: center;
@@ -128,10 +137,63 @@
 
 .accessibility-note svg {
   color: var(--mint-accent);
+  min-width: 16px;
 }
 
+/* Tablet */
 @media (max-width: 992px) {
   .clinic-container {
     flex-direction: column;
+    gap: 50px;
+  }
+  
+  .gallery-main {
+    height: 300px;
+  }
+  
+  .gallery-sub {
+    height: 160px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .gallery-main {
+    height: 250px;
+  }
+  
+  .gallery-sub {
+    height: 130px;
+    gap: 10px;
+  }
+  
+  .gallery-sub img {
+    border-radius: 8px;
+  }
+  
+  .tech-item {
+    gap: 15px;
+  }
+  
+  .clinic-address-box {
+    padding: 15px;
+  }
+}
+
+/* Small mobile */
+@media (max-width: 480px) {
+  .gallery-main {
+    height: 200px;
+    border-radius: 8px;
+  }
+  
+  .gallery-sub {
+    flex-direction: column;
+    height: auto;
+  }
+  
+  .gallery-sub img {
+    width: 100%;
+    height: 150px;
   }
 }

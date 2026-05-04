@@ -13,7 +13,7 @@
   background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  padding: 15px 0;
+  padding: 12px 0;
   box-shadow: 0 2px 20px rgba(15, 42, 69, 0.05);
 }
 
@@ -53,6 +53,9 @@
   border: none;
   color: var(--primary-navy);
   cursor: pointer;
+  padding: 8px;
+  min-width: 44px;
+  min-height: 44px;
 }
 
 .mobile-nav-panel {
@@ -62,14 +65,16 @@
   width: 80%;
   max-width: 300px;
   height: 100vh;
+  height: 100dvh;
   background: var(--pure-white);
   box-shadow: -5px 0 30px rgba(0,0,0,0.1);
   transition: right 300ms ease;
   z-index: 99;
   display: flex;
   flex-direction: column;
-  padding: 80px 30px;
+  padding: 100px 30px 30px;
   gap: 25px;
+  overflow-y: auto;
 }
 
 .mobile-nav-panel.open {
@@ -80,6 +85,29 @@
   font-size: 18px;
   font-weight: 500;
   color: var(--primary-navy);
+  padding: 10px 0;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+}
+
+/* Overlay when mobile menu is open */
+.mobile-nav-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.3);
+  z-index: 98;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 300ms ease;
+}
+
+.mobile-nav-overlay.active {
+  opacity: 1;
+  pointer-events: all;
 }
 
 .mobile-sticky-cta {
@@ -88,9 +116,9 @@
   bottom: 0;
   left: 0;
   width: 100%;
-  z-index: 98;
+  z-index: 97;
   background: var(--pure-white);
-  box-shadow: 0 -2px 15px rgba(0,0,0,0.05);
+  box-shadow: 0 -2px 15px rgba(0,0,0,0.08);
 }
 
 .sticky-btn {
@@ -99,8 +127,11 @@
   justify-content: center;
   align-items: center;
   gap: 8px;
-  padding: 15px 0;
+  padding: 16px 0;
   font-weight: 600;
+  font-size: 15px;
+  min-height: 56px;
+  text-decoration: none;
 }
 
 .sticky-btn.primary {
@@ -113,15 +144,26 @@
   background: var(--surface-white);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 992px) {
   .desktop-nav {
     display: none;
   }
   .mobile-menu-btn {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     z-index: 101;
   }
   .mobile-sticky-cta {
     display: flex;
+  }
+  .logo {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo {
+    font-size: 18px;
   }
 }
