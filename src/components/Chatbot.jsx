@@ -1,5 +1,11 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
+import emailjs from '@emailjs/browser';
 import './Chatbot.css';
+
+/* ── EmailJS config (You will need to set these in Vercel) ── */
+const EMAILJS_SERVICE_ID  = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+const EMAILJS_PUBLIC_KEY  = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
 /* ── Groq config ── */
 const GROQ_API_URL = 'https://api.groq.com/openai/v1/chat/completions';
@@ -25,7 +31,7 @@ SERVICES & COSTS:
 RULES:
 - Keep responses short and sweet (2-3 sentences).
 - If someone is in pain, be extra comforting.
-- Always offer to help them book an appointment with Dr. Sangle.`;
+- **IMPORTANT:** If a user wants to book an appointment or check availability, ALWAYS tell them: "I can help you with that! Please fill out this quick form below so Dr. Sangle can get back to you personally." and then I will show the form.`;
 
 const QUICK_REPLIES = [
   { label: '📅 Book Appointment', text: 'How do I book an appointment?' },
@@ -58,6 +64,61 @@ function stripForSpeech(text) {
     .replace(/\n/g, '. ')
     .replace(/\s{2,}/g, ' ')
     .trim();
+}
+
+/* ── Booking Form Component ── */
+function BookingForm({ onComplete }) {
+  const [formData, setFormData] = useState({ name: '', phone: '', note: '' });
+  const [sent, setSent] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!formData.name || !formData.phone) return;
+    setLoading(true);
+
+    try {
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        {
+          from_name: formData.name,
+          reply_to: formData.phone,
+          message: `NEW APPOINTMENT REQUEST FROM CHATBOT:\nName: ${formData.name}\nPhone: ${formData.phone}\nConcern: ${formData.note}`,
+        },
+        EMAILJS_PUBLIC_KEY
+      );
+      setSent(true);
+      onComplete(`Thank you ${formData.name}! Dr. Sangle has been notified and will call you soon on ${formData.phone}.`);
+    } catch (err) {
+      alert("Something went wrong. Please call +91 98341 88787 directly.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  if (sent) return <div className="form-success-msg">✅ Request Sent to Dr. Sangle!</div>;
+
+  return (
+    <form className="booking-form-card" onSubmit={handleSubmit}>
+      <h4>📅 Request Consultation</h4>
+      <input 
+        type="text" placeholder="Your Name" required 
+        value={formData.name} onChange={e => setFormData({...formData, name: e.target.value})}
+      />
+      <input 
+        type="tel" placeholder="Phone Number" required 
+        value={formData.phone} onChange={e => setFormData({...formData, phone: e.target.value})}
+      />
+      <textarea 
+        placeholder="Dental concern (optional)" 
+        value={formData.note} onChange={e => setFormData({...formData, note: e.target.value})}
+      />
+      <button type="submit" disabled={loading}>
+        {loading ? "Sending..." : "Submit to Doctor"}
+      </button>
+    </form>
+  );
 }
 
 let msgId = 1;
@@ -214,7 +275,10 @@ export default function Chatbot() {
       const reply = data.choices?.[0]?.message?.content?.trim()
         || 'Sorry, I could not process that. Please try again.';
 
-      setMessages(prev => [...prev, { role: 'assistant', content: reply, id: msgId++ }]);
+      // ✅ Detect if AI wants the user to book (via the system prompt instructions)
+      if (reply.toLowerCase().includes("fill out this quick form") || reply.toLowerCase().includes("book an appointment")) {
+        setMessages(prev => [...prev, { role: 'assistant', content: 'FORM_PLACEHOLDER', isBookingForm: true, id: msgId++ }]);
+      }
 
       // ✅ Speak if voice mode OR voice input triggered it
       if (fromVoice || voiceModeRef.current) {
@@ -441,7 +505,14 @@ export default function Chatbot() {
               {messages.map(msg => (
                 <div key={msg.id} className={`msg-row msg-${msg.role}`}>
                   {msg.role === 'assistant' && <div className="msg-avatar-sm">🦷</div>}
-                  <div className="msg-bubble" dangerouslySetInnerHTML={{ __html: parseMarkdown(msg.content) }}/>
+                  {msg.isBookingForm ? (
+                    <BookingForm onComplete={(confirmText) => {
+                      setMessages(prev => [...prev, { role: 'assistant', content: confirmText, id: msgId++ }]);
+                      speak(confirmText);
+                    }} />
+                  ) : (
+                    <div className="msg-bubble" dangerouslySetInnerHTML={{ __html: parseMarkdown(msg.content) }}/>
+                  )}
                 </div>
               ))}
               {loading && (

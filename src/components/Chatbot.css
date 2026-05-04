@@ -430,3 +430,78 @@
 }
 .chatbot-footer-note a { color:#3abf57; font-weight:600; text-decoration:none; }
 .chatbot-footer-note a:hover { text-decoration:underline; }
+/* ── Booking Form Card ── */
+.booking-form-card {
+  background: #fff;
+  border: 1.5px solid rgba(58, 191, 87, 0.3);
+  border-radius: 16px;
+  padding: 18px;
+  margin: 10px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  width: 90%;
+  max-width: 320px;
+  animation: formSlideUp 0.4s ease;
+}
+@keyframes formSlideUp { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+
+.booking-form-card h4 {
+  margin: 0 0 5px;
+  font-size: 15px;
+  color: #1a7a2e;
+  font-family: 'Playfair Display', serif;
+}
+
+.booking-form-card input, 
+.booking-form-card textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  font-size: 13.5px;
+  font-family: 'DM Sans', sans-serif;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.booking-form-card input:focus, 
+.booking-form-card textarea:focus {
+  border-color: #3abf57;
+}
+
+.booking-form-card textarea {
+  height: 60px;
+  resize: none;
+}
+
+.booking-form-card button {
+  background: linear-gradient(135deg, #1a7a2e, #3abf57);
+  color: #fff;
+  border: none;
+  padding: 12px;
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.booking-form-card button:hover:not(:disabled) {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+.booking-form-card button:disabled {
+  opacity: 0.5;
+}
+
+.form-success-msg {
+  padding: 12px 18px;
+  background: #e8f5e9;
+  color: #2e7d32;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 14px;
+  border: 1px solid #c8e6c9;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
