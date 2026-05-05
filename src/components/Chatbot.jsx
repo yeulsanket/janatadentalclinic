@@ -86,6 +86,13 @@ function BookingForm({ onComplete }) {
     if (!formData.name || !formData.phone) return;
     setLoading(true);
 
+    if (!EMAILJS_SERVICE_ID || !EMAILJS_PUBLIC_KEY) {
+      console.error('Chatbot Form Error: Missing Environment Variables. Please restart your dev server.');
+      alert("Configuration error. Please call +91 98341 88787 directly.");
+      setLoading(false);
+      return;
+    }
+
     try {
       await emailjs.send(
         EMAILJS_SERVICE_ID,
@@ -100,6 +107,7 @@ function BookingForm({ onComplete }) {
       setSent(true);
       onComplete(`Thank you ${formData.name}! Dr. Sangle has been notified and will call you soon on ${formData.phone}.`);
     } catch (err) {
+      console.error('Chatbot Form Full Error:', err);
       alert("Something went wrong. Please call +91 98341 88787 directly.");
     } finally {
       setLoading(false);
@@ -262,6 +270,11 @@ export default function Chatbot() {
     setLoading(true);
     loadingRef.current = true;
     if (fromVoice) setVoiceStatus('Thinking…');
+
+    if (!EMAILJS_SERVICE_ID || !EMAILJS_PUBLIC_KEY) {
+      console.error('Chatbot AI Error: Missing Environment Variables. Please restart your dev server.');
+      return;
+    }
 
     try {
       const res = await fetch(GROQ_API_URL, {

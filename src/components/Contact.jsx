@@ -25,6 +25,12 @@ export default function Contact() {
     e.preventDefault();
     setStatus('sending');
 
+    if (!EMAILJS_SERVICE_ID || !EMAILJS_PUBLIC_KEY) {
+      console.error('EmailJS Error: Missing Environment Variables. Please restart your dev server.');
+      setStatus('error');
+      return;
+    }
+
     try {
       await emailjs.sendForm(
         EMAILJS_SERVICE_ID,
@@ -37,7 +43,7 @@ export default function Contact() {
       // Reset status after 5 seconds
       setTimeout(() => setStatus('idle'), 5000);
     } catch (error) {
-      console.error('EmailJS Error:', error);
+      console.error('EmailJS Full Error:', error);
       setStatus('error');
       setTimeout(() => setStatus('idle'), 5000);
     }
