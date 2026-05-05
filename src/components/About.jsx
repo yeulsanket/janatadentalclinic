@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './About.css';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
+import consultationImg from '../assets/1000373747.jpg';
+import clinicInteriorImg from '../assets/1000373732.jpg';
 
 const Counter = ({ end, duration = 2000, suffix = "" }) => {
   const [count, setCount] = useState(0);
@@ -33,7 +35,7 @@ export default function About() {
         <div className="about-image-col fade-up">
           <div className="about-image-wrapper">
             <img 
-              src="/doctor-profile.jpg" 
+              src={consultationImg} 
               alt="Dr. Rushikesh in clinic" 
             />
             <div className="floating-credential-card">
@@ -82,6 +84,20 @@ export default function About() {
               <Counter end={3} />
               <span className="stat-label">Awards</span>
             </div>
+          </div>
+          </div>
+        </div>
+
+        {/* New Facility Highlight Section */}
+        <div className="facility-highlight fade-up" style={{marginTop: '60px', width: '100%'}}>
+          <div className="facility-content">
+             <div className="facility-text">
+               <h3>Our State-of-the-Art Facility</h3>
+               <p>We take pride in maintaining a clinic that meets the highest international standards of hygiene and technology. Our treatment rooms are designed for both patient comfort and clinical precision.</p>
+             </div>
+             <div className="facility-image">
+               <img src={clinicInteriorImg} alt="Janata Dental Clinic Interior" className="rounded-lg shadow-xl" />
+             </div>
           </div>
         </div>
       </div>

@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import './Gallery.css';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
+import xrayImg from '../assets/1000373765.jpg';
 
 const cases = [
   {
@@ -34,6 +35,14 @@ const cases = [
     duration: 'Completed in 1 session',
     before: 'https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=600&q=80',
     after: 'https://images.unsplash.com/photo-1590625624736-fc057c742c38?auto=format&fit=crop&w=600&q=80'
+  },
+  {
+    id: 5,
+    category: 'Diagnostics',
+    tag: 'Digital OPG X-Ray',
+    duration: 'Instant Diagnostic Result',
+    before: xrayImg,
+    after: xrayImg
   }
 ];
 
@@ -91,7 +100,7 @@ export default function Gallery() {
   const [filter, setFilter] = useState('All');
   const sectionRef = useScrollAnimation();
 
-  const filters = ['All', 'Implants', 'Veneers', 'Aligners', 'Whitening'];
+  const filters = ['All', 'Implants', 'Veneers', 'Aligners', 'Whitening', 'Diagnostics'];
   const filteredCases = filter === 'All' ? cases : cases.filter(c => c.category === filter);
 
   return (
