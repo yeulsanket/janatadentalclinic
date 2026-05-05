@@ -1,6 +1,7 @@
 import React from 'react';
 import './Hero.css';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
+import doctorImg from '../assets/doctor.jpg';
 
 export default function Hero() {
   const contentRef = useScrollAnimation();
@@ -19,8 +20,8 @@ export default function Hero() {
         <div className="hero-image-col">
           <div className="hero-image-wrapper fade-up visible">
             <img 
-              src="/doctor-profile.jpg" 
-              alt="Dr. Rushikesh Sangle Portrait" 
+              src={doctorImg} 
+              alt="Dr. Rushikesh Sangle" 
               className="hero-portrait"
             />
           </div>

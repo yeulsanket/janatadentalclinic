@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import emailjs from '@emailjs/browser';
+import doctorImg from '../assets/doctor.jpg';
 import './Chatbot.css';
 
 /* ── EmailJS config (Matched with Contact.jsx) ── */
@@ -423,7 +424,9 @@ export default function Chatbot() {
 
         {/* Header */}
         <div className="chatbot-header">
-          <div className="chatbot-avatar">🦷</div>
+          <div className="chatbot-avatar">
+            <img src={doctorImg} alt="Dr. Sangle" />
+          </div>
           <div className="chatbot-header-info">
             <div className="chatbot-name">SmileBot</div>
             <div className="chatbot-status">
@@ -535,7 +538,11 @@ export default function Chatbot() {
             <div className="chatbot-messages" role="log" aria-live="polite">
               {messages.map(msg => (
                 <div key={msg.id} className={`msg-row msg-${msg.role}`}>
-                  {msg.role === 'assistant' && <div className="msg-avatar-sm">🦷</div>}
+                  {msg.role === 'assistant' && (
+                    <div className="msg-avatar-sm">
+                      <img src={doctorImg} alt="Dr. Sangle" />
+                    </div>
+                  )}
                   {msg.isBookingForm ? (
                     <BookingForm onComplete={(confirmText) => {
                       setMessages(prev => [...prev, { role: 'assistant', content: confirmText, id: msgId++ }]);
