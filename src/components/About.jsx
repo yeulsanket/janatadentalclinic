@@ -85,7 +85,6 @@ export default function About() {
               <span className="stat-label">Awards</span>
             </div>
           </div>
-          </div>
         </div>
 
         {/* New Facility Highlight Section */}
