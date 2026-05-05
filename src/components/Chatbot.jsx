@@ -4,9 +4,9 @@ import doctorImg from '../assets/doctor.jpg';
 import './Chatbot.css';
 
 /* ── EmailJS config (Matched with Contact.jsx) ── */
-const EMAILJS_SERVICE_ID  = 'service_elln6qa';
-const EMAILJS_TEMPLATE_ID = 'template_0zz0xzq';
-const EMAILJS_PUBLIC_KEY  = 'u1KiC5gPnxgWorTpF';
+const EMAILJS_SERVICE_ID  = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+const EMAILJS_PUBLIC_KEY  = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
 /* ── Groq config ── */
 const GROQ_API_URL = 'https://api.groq.com/openai/v1/chat/completions';
