@@ -90,7 +90,7 @@ export default function About() {
 
       <div className="container">
         {/* New Facility Highlight Section */}
-        <div className="facility-highlight fade-up" style={{marginTop: '60px', width: '100%'}}>
+        <div className="facility-highlight fade-up">
           <div className="facility-content">
              <div className="facility-text">
                <h3>Our State-of-the-Art Facility</h3>
