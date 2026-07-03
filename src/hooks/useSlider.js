@@ -7,22 +7,27 @@ import { SliderEngine, getResponsiveItemsToShow, handleSwipeGesture } from '../u
 export function useSlider({ totalItems = 0, interval = 2500, autoPlay = true, gap = 24 } = {}) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [itemsToShow, setItemsToShow] = useState(3);
+  const [responsiveGap, setResponsiveGap] = useState(gap);
   const [progress, setProgress] = useState(0);
   const [isAutoPlay, setIsAutoPlay] = useState(autoPlay);
   const [isHovered, setIsHovered] = useState(false);
 
   const touchStartX = useRef(null);
+  const touchStartY = useRef(null);
   const touchEndX = useRef(null);
+  const touchEndY = useRef(null);
 
-  // Responsive Breakpoints
+  // Responsive Breakpoints & Gap Alignment
   useEffect(() => {
     const handleResize = () => {
-      setItemsToShow(getResponsiveItemsToShow(window.innerWidth));
+      const width = window.innerWidth;
+      setItemsToShow(getResponsiveItemsToShow(width));
+      setResponsiveGap(width <= 768 ? 16 : gap);
     };
     handleResize();
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
-  }, []);
+  }, [gap]);
 
   const maxIndex = Math.max(0, totalItems - itemsToShow);
 
@@ -59,34 +64,47 @@ export function useSlider({ totalItems = 0, interval = 2500, autoPlay = true, ga
     const step = (tick / interval) * 100;
 
     const timer = setInterval(() => {
-      setProgress((prevProg) => {
-        if (prevProg + step >= 100) {
-          setCurrentIndex((prevIdx) => (prevIdx >= maxIndex ? 0 : prevIdx + 1));
+      setProgress((prevProgress) => {
+        if (prevProgress + step >= 100) {
+          nextSlide();
           return 0;
         }
-        return prevProg + step;
+        return prevProgress + step;
       });
     }, tick);
 
     return () => clearInterval(timer);
-  }, [isAutoPlay, isHovered, maxIndex, interval, totalItems, itemsToShow]);
+  }, [isAutoPlay, isHovered, totalItems, itemsToShow, interval, currentIndex, maxIndex]);
 
   const handleTouchStart = (e) => {
     touchStartX.current = e.targetTouches[0].clientX;
+    touchStartY.current = e.targetTouches[0].clientY;
     setIsHovered(true);
   };
 
   const handleTouchMove = (e) => {
     touchEndX.current = e.targetTouches[0].clientX;
+    touchEndY.current = e.targetTouches[0].clientY;
   };
 
   const handleTouchEnd = () => {
-    const direction = handleSwipeGesture(touchStartX.current, touchEndX.current);
-    if (direction === 'next') nextSlide();
-    if (direction === 'prev') prevSlide();
+    if (touchStartX.current !== null && touchEndX.current !== null) {
+      const diffX = touchStartX.current - touchEndX.current;
+      const diffY = touchStartY.current !== null && touchEndY.current !== null 
+        ? Math.abs(touchStartY.current - touchEndY.current) 
+        : 0;
+
+      // Only swipe horizontally if X movement exceeds 35px AND is greater than Y scroll movement
+      if (Math.abs(diffX) > 35 && Math.abs(diffX) > diffY) {
+        if (diffX > 0) nextSlide();
+        else prevSlide();
+      }
+    }
 
     touchStartX.current = null;
+    touchStartY.current = null;
     touchEndX.current = null;
+    touchEndY.current = null;
     setIsHovered(false);
   };
 
@@ -105,6 +123,6 @@ export function useSlider({ totalItems = 0, interval = 2500, autoPlay = true, ga
     handleTouchStart,
     handleTouchMove,
     handleTouchEnd,
-    trackTransform: `translateX(calc(-${currentIndex} * (100% + ${gap}px) / ${itemsToShow}))`
+    trackTransform: `translateX(calc(-${currentIndex} * (100% + ${responsiveGap}px) / ${itemsToShow}))`
   };
 }
