@@ -111,7 +111,7 @@ export class SliderEngine {
 /**
  * Utility function to calculate items to show based on window width
  */
-export function getResponsiveItemsToShow(width, breakpoints = { mobile: 640, tablet: 992 }) {
+export function getResponsiveItemsToShow(width, breakpoints = { mobile: 768, tablet: 992 }) {
   if (width < breakpoints.mobile) return 1;
   if (width < breakpoints.tablet) return 2;
   return 3;

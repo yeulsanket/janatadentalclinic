@@ -75,7 +75,7 @@ export default function Hero() {
 
           {/* Staggered Title */}
           <h1 className="hero-title">
-            <span style={{ display: 'inline-block' }}>
+            <span style={{ display: 'inline' }}>
               {wordsLine1.map((word, i) => (
                 <motion.span
                   key={word}
@@ -90,7 +90,7 @@ export default function Hero() {
               ))}
             </span>
             <br />
-            <span style={{ display: 'inline-block' }}>
+            <span style={{ display: 'inline' }}>
               {wordsLine2.map((word, i) => (
                 <motion.span
                   key={word}

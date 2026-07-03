@@ -228,7 +228,7 @@
   .services-top-layout { margin-bottom:36px; }
   .services-subtitle { font-size:16px; }
 }
-@media (max-width:640px) {
+@media (max-width:768px) {
   .slider-track { gap: 16px; }
   .service-slide {
     flex: 0 0 100%;
