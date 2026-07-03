@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Phone, Calendar } from 'lucide-react';
+import { Menu, X, Phone, Calendar, Sparkles } from 'lucide-react';
+import { motion } from 'framer-motion';
 import './Header.css';
 
 export default function Header() {
@@ -8,7 +9,7 @@ export default function Header() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
+      setScrolled(window.scrollY > 30);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
@@ -16,31 +17,59 @@ export default function Header() {
 
   return (
     <>
-      <header className={`header ${scrolled ? 'scrolled' : ''}`}>
+      <motion.header
+        initial={{ y: -80, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
+        className={`header ${scrolled ? 'scrolled' : ''}`}
+      >
         <div className="container header-container">
-          <div className="logo">Janata Dental Clinic</div>
+          <a href="#hero" className="logo" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none' }}>
+            <span style={{ display: 'flex', alignItems: 'center', color: scrolled ? '#248a3d' : '#ffffff', transition: 'color 300ms ease' }}>
+              <Sparkles size={24} />
+            </span>
+            <span className="brand-logo-text" style={{ display: 'flex', flexDirection: 'column', lineHeight: 1.1 }}>
+              <strong style={{ fontSize: '19px', fontWeight: 800, letterSpacing: '-0.4px', color: scrolled ? '#12612a' : '#ffffff', transition: 'color 300ms ease' }}>JANATA DENTAL</strong>
+              <small style={{ fontSize: '10px', fontWeight: 700, color: scrolled ? '#248a3d' : '#d4f5dc', letterSpacing: '1.5px', textTransform: 'uppercase', transition: 'color 300ms ease' }}>Dr. Rushikesh Sangle</small>
+            </span>
+          </a>
           
           <nav className="desktop-nav">
             <a href="#about">About</a>
             <a href="#services">Treatments</a>
             <a href="#gallery">Before & After</a>
             <a href="#testimonials">Reviews</a>
-            <a href="#contact" className="btn btn-primary" style={{ padding: '8px 20px' }}>Book Consult</a>
+            <a href="#contact" className={`btn nav-cta ${scrolled ? 'scrolled-cta' : 'top-cta'}`}>
+              Book Consult
+            </a>
           </nav>
 
-          <button className="mobile-menu-btn" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
+          <button
+            className="mobile-menu-btn"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label="Toggle Navigation Menu"
+          >
             {mobileMenuOpen ? <X /> : <Menu />}
           </button>
         </div>
+      </motion.header>
 
-        {/* Mobile slide-in panel */}
-        <div className={`mobile-nav-panel ${mobileMenuOpen ? 'open' : ''}`}>
-          <a href="#about" onClick={() => setMobileMenuOpen(false)}>About</a>
-          <a href="#services" onClick={() => setMobileMenuOpen(false)}>Treatments</a>
-          <a href="#gallery" onClick={() => setMobileMenuOpen(false)}>Before & After</a>
-          <a href="#testimonials" onClick={() => setMobileMenuOpen(false)}>Reviews</a>
-        </div>
-      </header>
+      {/* Mobile nav overlay */}
+      <div
+        className={`mobile-nav-overlay ${mobileMenuOpen ? 'active' : ''}`}
+        onClick={() => setMobileMenuOpen(false)}
+      />
+
+      {/* Mobile slide-in panel */}
+      <div className={`mobile-nav-panel ${mobileMenuOpen ? 'open' : ''}`}>
+        <a href="#about" onClick={() => setMobileMenuOpen(false)}>About</a>
+        <a href="#services" onClick={() => setMobileMenuOpen(false)}>Treatments</a>
+        <a href="#gallery" onClick={() => setMobileMenuOpen(false)}>Before & After</a>
+        <a href="#testimonials" onClick={() => setMobileMenuOpen(false)}>Reviews</a>
+        <a href="#contact" className="btn btn-primary" onClick={() => setMobileMenuOpen(false)} style={{ marginTop: '12px' }}>
+          Book Consultation
+        </a>
+      </div>
 
       {/* Mobile Sticky CTA */}
       <div className="mobile-sticky-cta">

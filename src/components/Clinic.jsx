@@ -2,6 +2,9 @@ import React from 'react';
 import './Clinic.css';
 import { Camera, Scan, Monitor, Search, FileText, CheckCircle2 } from 'lucide-react';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
+import imgNo3 from '../assets/imeageno3.webp';
+import imgNo2 from '../assets/imeageno2.webp';
+import imgNo1 from '../assets/imeageno1.jpg';
 
 const techFeatures = [
   { icon: <Camera size={24} />, name: 'Digital X-Ray', desc: 'Minimal radiation, instant high-res imaging.' },
@@ -19,11 +22,11 @@ export default function Clinic() {
       <div className="container clinic-container">
         <div className="clinic-gallery fade-up">
           <div className="gallery-main">
-            <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=800&q=80" alt="Clinic Reception" />
+            <img src={imgNo3} alt="Clinic Reception & Facility" />
           </div>
           <div className="gallery-sub">
-            <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=400&q=80" alt="Treatment Room" />
-            <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=400&q=80" alt="Advanced Equipment" />
+            <img src={imgNo2} alt="Treatment Room" />
+            <img src={imgNo1} alt="Advanced Equipment" />
           </div>
         </div>
 

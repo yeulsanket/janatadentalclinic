@@ -1,0 +1,162 @@
+/* ═══ ULTRA-PROFESSIONAL PRELOADER ═══ */
+.preloader-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  background: radial-gradient(circle at center, #15321f 0%, #0a180f 60%, #050d08 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 60px 40px;
+  color: #ffffff;
+  font-family: var(--font-body, 'Inter', sans-serif);
+  overflow: hidden;
+  user-select: none;
+}
+
+/* Background subtle grid & light rays */
+.preloader-bg-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(58, 191, 87, 0.15) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(40px);
+}
+
+/* Top header in preloader */
+.preloader-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  opacity: 0.85;
+  letter-spacing: 3px;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #3abf57;
+}
+
+.preloader-dot {
+  width: 8px;
+  height: 8px;
+  background: #3abf57;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #3abf57;
+  animation: preloaderPulse 1.2s infinite ease-in-out;
+}
+
+@keyframes preloaderPulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.5); opacity: 0.5; }
+}
+
+/* Center stage content */
+.preloader-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  z-index: 2;
+}
+
+.preloader-emblem {
+  width: 80px;
+  height: 80px;
+  background: rgba(58, 191, 87, 0.12);
+  border: 1px solid rgba(58, 191, 87, 0.35);
+  border-radius: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30px;
+  color: #3abf57;
+  box-shadow: 0 15px 35px rgba(58, 191, 87, 0.2);
+}
+
+.preloader-title {
+  font-family: var(--font-heading, 'Playfair Display', serif);
+  font-size: clamp(32px, 5vw, 56px);
+  font-weight: 700;
+  margin: 0 0 12px;
+  background: linear-gradient(135deg, #ffffff 0%, #d1f5da 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: -0.5px;
+}
+
+.preloader-subtitle {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.65);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 45px;
+}
+
+/* Percentage Number */
+.preloader-counter {
+  font-family: var(--font-heading, 'Playfair Display', serif);
+  font-size: clamp(64px, 10vw, 110px);
+  font-weight: 800;
+  line-height: 1;
+  color: #ffffff;
+  margin: 10px 0;
+  text-shadow: 0 0 30px rgba(58, 191, 87, 0.3);
+}
+
+.preloader-counter span {
+  font-size: 0.5em;
+  color: #3abf57;
+  vertical-align: super;
+}
+
+/* Dynamic status text */
+.preloader-status {
+  font-size: 14px;
+  color: #a3d9b1;
+  font-family: monospace;
+  letter-spacing: 1.5px;
+  margin-top: 15px;
+  min-height: 20px;
+}
+
+/* Bottom Progress Bar */
+.preloader-bottom {
+  width: 100%;
+  max-width: 480px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.preloader-bar-track {
+  width: 100%;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+}
+
+.preloader-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #248a3d, #3abf57, #66e582);
+  border-radius: 4px;
+  box-shadow: 0 0 15px #3abf57;
+  transition: width 150ms ease-out;
+}
+
+.preloader-footer-text {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.45);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}

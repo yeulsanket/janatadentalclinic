@@ -34,14 +34,6 @@ export default function Footer() {
           <a href="#contact">Contact</a>
         </nav>
 
-        {/* Badges row */}
-        <div className="footer-badges">
-          <span className="footer-badge">🏆 18+ Awards</span>
-          <span className="footer-badge">⭐ 5.0 Rating</span>
-          <span className="footer-badge">🌍 ITI Certified</span>
-          <span className="footer-badge">🔒 SSL Secure</span>
-        </div>
-
         {/* Divider */}
         <div className="footer-divider" aria-hidden="true" />
 
