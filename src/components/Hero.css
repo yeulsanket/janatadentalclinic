@@ -183,14 +183,26 @@
 .hero-ctas { display:flex; gap:20px; flex-wrap:wrap; }
 .hero-btn { display: inline-flex; align-items: center; gap: 8px; }
 
-/* Tablet */
+/* Tablet & Mobile */
 @media (max-width:992px) {
   .hero-section { padding-top:80px; }
-  .hero-container { flex-direction:column-reverse; text-align:center; padding-top:30px; padding-bottom:80px; gap:40px; }
-  .hero-ctas { justify-content:center; }
-  .hero-image-col { width:100%; max-width:400px; }
-  .hero-trust-row { justify-content:center; }
-  .hero-credentials { font-size:16px; }
+  .hero-container {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding-top: 30px;
+    padding-bottom: 80px;
+    gap: 24px;
+  }
+  .hero-content-col {
+    display: contents;
+  }
+  .live-status-pill { order: 1; }
+  .hero-title       { order: 2; }
+  .hero-credentials { order: 3; }
+  .hero-trust-row   { order: 4; justify-content: center; margin-bottom: 12px; }
+  .hero-image-col   { order: 5; width: 100%; max-width: 400px; margin: 12px auto 20px; }
+  .hero-ctas        { order: 6; justify-content: center; width: 100%; }
   .floating-hero-badge { left: 10px; }
 }
 /* Mobile */
