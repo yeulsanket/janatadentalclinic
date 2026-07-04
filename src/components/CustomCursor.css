@@ -4,11 +4,11 @@
   left: -4px;
   width: 8px;
   height: 8px;
-  background-color: var(--pg-bright, #4cd669);
+  background-color: var(--pg-bright, #f06595);
   border-radius: 50%;
   pointer-events: none;
   z-index: 99999;
-  box-shadow: 0 0 10px var(--pg-bright, #4cd669);
+  box-shadow: 0 0 10px var(--pg-bright, #f06595);
 }
 
 .cursor-ring {
@@ -17,8 +17,8 @@
   left: -20px;
   width: 40px;
   height: 40px;
-  border: 1.5px solid rgba(58, 191, 87, 0.45);
-  background: rgba(58, 191, 87, 0.04);
+  border: 1.5px solid rgba(214, 51, 108, 0.45);
+  background: rgba(214, 51, 108, 0.04);
   border-radius: 50%;
   pointer-events: none;
   z-index: 99998;
@@ -38,7 +38,7 @@
   height: 64px;
   top: -32px;
   left: -32px;
-  background: rgba(58, 191, 87, 0.15);
-  border-color: var(--pg-main, #3abf57);
-  box-shadow: 0 0 25px rgba(58, 191, 87, 0.35);
+  background: rgba(214, 51, 108, 0.15);
+  border-color: var(--pg-main, #d6336c);
+  box-shadow: 0 0 25px rgba(214, 51, 108, 0.35);
 }

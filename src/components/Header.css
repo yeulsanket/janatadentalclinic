@@ -1,4 +1,4 @@
-/* ═══ HEADER – White + Parrot Green ═══ */
+/* ═══ HEADER – White + Luxury Rose Pink ═══ */
 .header {
   position: fixed;
   top: 0; left: 0;
@@ -6,7 +6,7 @@
   z-index: 100;
   transition: all 350ms cubic-bezier(.25,.46,.45,.94);
   padding: 20px 0;
-  background: linear-gradient(180deg, rgba(15,82,36,0.65) 0%, rgba(15,82,36,0.2) 75%, transparent 100%);
+  background: linear-gradient(180deg, rgba(136,29,72,0.65) 0%, rgba(136,29,72,0.2) 75%, transparent 100%);
 }
 
 .header.scrolled {
@@ -14,8 +14,8 @@
   backdrop-filter: blur(24px) saturate(180%);
   -webkit-backdrop-filter: blur(24px) saturate(180%);
   padding: 14px 0;
-  box-shadow: 0 4px 30px rgba(58,191,87,0.14), 0 1px 0 rgba(255,255,255,0.9) inset;
-  border-bottom: 1px solid rgba(58,191,87,0.18);
+  box-shadow: 0 4px 30px rgba(214,51,108,0.14), 0 1px 0 rgba(255,255,255,0.9) inset;
+  border-bottom: 1px solid rgba(214,51,108,0.18);
 }
 
 .header-container {
@@ -51,11 +51,11 @@
   text-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 .header.scrolled .desktop-nav a {
-  color: #1c2a1f;
+  color: #2a1c21;
   text-shadow: none;
 }
 
-/* Animated green underline */
+/* Animated rose underline */
 .desktop-nav a:not(.btn)::after {
   content: '';
   position: absolute;
@@ -71,8 +71,8 @@
   box-shadow: 0 0 8px var(--pg-glow);
 }
 .desktop-nav a:not(.btn):hover::after { width: 100%; }
-.desktop-nav a:not(.btn):hover { color: #d4f5dc; transform: translateY(-1px); }
-.header.scrolled .desktop-nav a:not(.btn):hover { color: #248a3d; }
+.desktop-nav a:not(.btn):hover { color: #fcc2d7; transform: translateY(-1px); }
+.header.scrolled .desktop-nav a:not(.btn):hover { color: #a62657; }
 
 /* Dynamic CTA button in nav */
 .desktop-nav .nav-cta {
@@ -90,26 +90,26 @@
 
 .desktop-nav .top-cta {
   background: #ffffff;
-  color: #12612a;
+  color: #881d48;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
 }
 .desktop-nav .top-cta:hover {
-  background: #e8fbed;
-  color: #0f5224;
+  background: #fff0f6;
+  color: #701a3c;
   transform: translateY(-2px) scale(1.04);
   box-shadow: 0 10px 28px rgba(0, 0, 0, 0.32);
 }
 
 .desktop-nav .scrolled-cta {
-  background: linear-gradient(135deg, #1e8c40, #3abf57);
+  background: linear-gradient(135deg, #a62657, #d6336c);
   color: #ffffff;
-  box-shadow: 0 4px 16px rgba(58, 191, 87, 0.35);
+  box-shadow: 0 4px 16px rgba(214, 51, 108, 0.35);
 }
 .desktop-nav .scrolled-cta:hover {
-  background: linear-gradient(135deg, #156d30, #2fa147);
+  background: linear-gradient(135deg, #881d48, #b8285a);
   color: #ffffff;
   transform: translateY(-2px) scale(1.04);
-  box-shadow: 0 6px 24px rgba(58, 191, 87, 0.55);
+  box-shadow: 0 6px 24px rgba(214, 51, 108, 0.55);
 }
 
 /* Mobile */
@@ -133,8 +133,8 @@
   background: rgba(255,255,255,0.95);
   backdrop-filter: blur(28px) saturate(200%);
   -webkit-backdrop-filter: blur(28px) saturate(200%);
-  border-left: 1px solid rgba(58,191,87,0.2);
-  box-shadow: -10px 0 50px rgba(26,122,46,0.15);
+  border-left: 1px solid rgba(214,51,108,0.2);
+  box-shadow: -10px 0 50px rgba(136,29,72,0.15);
   transition: right 350ms cubic-bezier(.25,.46,.45,.94);
   z-index: 99;
   display: flex; flex-direction: column;
@@ -160,7 +160,7 @@
 .mobile-nav-overlay {
   position: fixed; top:0; left:0;
   width:100%; height:100%;
-  background: rgba(20,60,30,0.35);
+  background: rgba(60,20,35,0.35);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
   z-index: 98; opacity: 0;
@@ -176,8 +176,8 @@
   background: rgba(255,255,255,0.95);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  box-shadow: 0 -4px 20px rgba(58,191,87,0.12);
-  border-top: 1px solid rgba(58,191,87,0.15);
+  box-shadow: 0 -4px 20px rgba(214,51,108,0.12);
+  border-top: 1px solid rgba(214,51,108,0.15);
 }
 .sticky-btn {
   flex:1; display:flex; justify-content:center; align-items:center;
@@ -186,7 +186,7 @@
 }
 .sticky-btn:active { opacity:0.8; }
 .sticky-btn.primary { background:var(--grad-green); color:var(--white); }
-.sticky-btn.ghost   { color:var(--pg-dark); background:var(--surface,#edf8ef); }
+.sticky-btn.ghost   { color:var(--pg-dark); background:var(--surface,#fbf0f4); }
 
 @media (max-width:992px) {
   .desktop-nav { display:none; }

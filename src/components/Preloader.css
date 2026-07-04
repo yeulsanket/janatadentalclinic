@@ -3,7 +3,7 @@
   position: fixed;
   inset: 0;
   z-index: 999999;
-  background: radial-gradient(circle at center, #15321f 0%, #0a180f 60%, #050d08 100%);
+  background: radial-gradient(circle at center, #3c1020 0%, #1a080f 60%, #0d0407 100%);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -23,7 +23,7 @@
   transform: translate(-50%, -50%);
   width: 600px;
   height: 600px;
-  background: radial-gradient(circle, rgba(58, 191, 87, 0.15) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(214, 51, 108, 0.15) 0%, transparent 70%);
   border-radius: 50%;
   pointer-events: none;
   filter: blur(40px);
@@ -39,15 +39,15 @@
   font-size: 13px;
   font-weight: 600;
   text-transform: uppercase;
-  color: #3abf57;
+  color: #d6336c;
 }
 
 .preloader-dot {
   width: 8px;
   height: 8px;
-  background: #3abf57;
+  background: #d6336c;
   border-radius: 50%;
-  box-shadow: 0 0 10px #3abf57;
+  box-shadow: 0 0 10px #d6336c;
   animation: preloaderPulse 1.2s infinite ease-in-out;
 }
 
@@ -68,15 +68,15 @@
 .preloader-emblem {
   width: 80px;
   height: 80px;
-  background: rgba(58, 191, 87, 0.12);
-  border: 1px solid rgba(58, 191, 87, 0.35);
+  background: rgba(214, 51, 108, 0.12);
+  border: 1px solid rgba(214, 51, 108, 0.35);
   border-radius: 24px;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 30px;
-  color: #3abf57;
-  box-shadow: 0 15px 35px rgba(58, 191, 87, 0.2);
+  color: #d6336c;
+  box-shadow: 0 15px 35px rgba(214, 51, 108, 0.2);
 }
 
 .preloader-title {
@@ -84,7 +84,7 @@
   font-size: clamp(32px, 5vw, 56px);
   font-weight: 700;
   margin: 0 0 12px;
-  background: linear-gradient(135deg, #ffffff 0%, #d1f5da 100%);
+  background: linear-gradient(135deg, #ffffff 0%, #fcc2d7 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   letter-spacing: -0.5px;
@@ -106,19 +106,19 @@
   line-height: 1;
   color: #ffffff;
   margin: 10px 0;
-  text-shadow: 0 0 30px rgba(58, 191, 87, 0.3);
+  text-shadow: 0 0 30px rgba(214, 51, 108, 0.3);
 }
 
 .preloader-counter span {
   font-size: 0.5em;
-  color: #3abf57;
+  color: #d6336c;
   vertical-align: super;
 }
 
 /* Dynamic status text */
 .preloader-status {
   font-size: 14px;
-  color: #a3d9b1;
+  color: #f08fae;
   font-family: monospace;
   letter-spacing: 1.5px;
   margin-top: 15px;
@@ -146,9 +146,9 @@
 
 .preloader-bar-fill {
   height: 100%;
-  background: linear-gradient(90deg, #248a3d, #3abf57, #66e582);
+  background: linear-gradient(90deg, #881d48, #d6336c, #f06595);
   border-radius: 4px;
-  box-shadow: 0 0 15px #3abf57;
+  box-shadow: 0 0 15px #d6336c;
   transition: width 150ms ease-out;
 }
 

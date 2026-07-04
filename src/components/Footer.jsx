@@ -29,7 +29,6 @@ export default function Footer() {
         <nav className="footer-nav" aria-label="Footer navigation">
           <a href="#about">About</a>
           <a href="#services">Services</a>
-          <a href="#gallery">Gallery</a>
           <a href="#credentials">Awards</a>
           <a href="#contact">Contact</a>
         </nav>
@@ -49,10 +48,10 @@ export default function Footer() {
       </div>
 
       <style>{`
-        /* ═══ FOOTER – White + Parrot Green Theme ═══ */
+        /* ═══ FOOTER – White + Luxury Rose Pink Theme ═══ */
 
         .site-footer {
-          background: linear-gradient(160deg, #12612a 0%, #1a7a2e 50%, #0f5224 100%);
+          background: linear-gradient(160deg, #701a3c 0%, #881d48 50%, #601230 100%);
           color: rgba(255,255,255,0.75);
           padding: 0 0 40px;
           text-align: center;
@@ -66,14 +65,14 @@ export default function Footer() {
           position: absolute;
           top: -80px; left: 50%; transform: translateX(-50%);
           width: 600px; height: 400px;
-          background: radial-gradient(ellipse, rgba(76,214,105,0.12) 0%, transparent 70%);
+          background: radial-gradient(ellipse, rgba(240,101,149,0.12) 0%, transparent 70%);
           pointer-events: none;
           z-index: 0;
         }
 
         /* Wave SVG at top */
         .footer-wave {
-          color: #f5fdf6; /* matches off-white above footer */
+          color: #fff0f6; /* matches off-white above footer */
           line-height: 0;
           position: relative;
           z-index: 1;
@@ -135,8 +134,8 @@ export default function Footer() {
           text-decoration: none;
         }
         .footer-nav a:hover {
-          background: rgba(76,214,105,0.18);
-          border-color: rgba(76,214,105,0.45);
+          background: rgba(240,101,149,0.18);
+          border-color: rgba(240,101,149,0.45);
           color: #ffffff;
         }
 
@@ -164,8 +163,8 @@ export default function Footer() {
           transition: background 220ms ease, border-color 220ms ease;
         }
         .footer-badge:hover {
-          background: rgba(76,214,105,0.15);
-          border-color: rgba(76,214,105,0.4);
+          background: rgba(240,101,149,0.15);
+          border-color: rgba(240,101,149,0.4);
         }
 
         /* Divider */
@@ -173,11 +172,11 @@ export default function Footer() {
           width: 100%;
           height: 1px;
           background: linear-gradient(90deg,
-            transparent, rgba(76,214,105,0.4) 30%,
-            rgba(76,214,105,0.6) 50%,
-            rgba(76,214,105,0.4) 70%, transparent
+            transparent, rgba(240,101,149,0.4) 30%,
+            rgba(240,101,149,0.6) 50%,
+            rgba(240,101,149,0.4) 70%, transparent
           );
-          box-shadow: 0 0 10px rgba(76,214,105,0.2);
+          box-shadow: 0 0 10px rgba(240,101,149,0.2);
         }
 
         /* Bottom row */
@@ -197,7 +196,7 @@ export default function Footer() {
           gap: 20px;
         }
         .footer-legal a {
-          color: rgba(76,214,105,0.9);
+          color: rgba(240,101,149,0.9);
           font-weight: 500;
           text-decoration: none;
           transition: color 200ms ease;
